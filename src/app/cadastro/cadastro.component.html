@@ -1,0 +1,39 @@
+<p-toast></p-toast>
+<div class="container-cadastro">
+  <div
+    class="grid col-12 justify-content-center align-items-center flex-column"
+  >
+    <p class="txt">Informe os dados sobre o filme ou série</p>
+  </div>
+  <div
+    class="grid col-12 justify-content-center align-items-center flex-column"
+  >
+    <div class="mt-3">
+      <input type="text"  [(ngModel)]="filmeSerieBody.nome" pInputText placeholder="Nome do Filme ou série " />
+    </div>
+
+    <h3>Selecione a imagem de capa</h3>
+    <p-fileUpload
+    chooseLabel="Escolher"
+    name="file[]"
+    [customUpload]="true"
+    (uploadHandler)="onUpload($event)"
+    [maxFileSize]="200000000"
+  >
+  </p-fileUpload>
+
+    <span class="p-float-label mt-5">
+      <textarea id="float-input" [(ngModel)]="filmeSerieBody.descricao" rows="7" cols="55" pInputTextarea></textarea>
+      <label for="float-input">Descrição do filme/série</label>
+    </span>
+  </div>
+  <div class="btn grid col-12">
+    <button
+      class="btn-prosseguir"
+      pButton
+      type="button"
+      (click)="cadastrarFilmeSerie()"
+      label="CADASTRAR"
+    ></button>
+  </div>
+</div>

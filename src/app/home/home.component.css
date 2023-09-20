@@ -1,0 +1,28 @@
+.resultado-prova-de-vida {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+.resultado-prova-de-vida2 {
+  width: 20%;
+  max-height: 400px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+.product-name {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* .product-grid-item {
+  min-height: 118vh;
+}
+
+.product-grid-item-bottom {
+  display: flex;
+  align-items: flex-end;
+
+
+} */
