@@ -50,7 +50,11 @@ export class HomeComponent implements OnInit {
     this.cadastroService.buscarPeloID(id).subscribe((response) => {
       this.filmeSerieBody = response;
       console.log(response);
+      this.homeService.setId(id);
       this.router.navigate(['/cadastro']);
     });
   }
+
+
+
 }

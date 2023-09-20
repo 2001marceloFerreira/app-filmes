@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
   baseURL = '';
   filmeSerie = new FilmeSerie();
-
+  id!: number;
   constructor(private http: HttpClient) {
     this.baseURL = `${environment.baseUrl}`;
   }
@@ -19,12 +18,16 @@ export class HomeService {
     return this.http.get<any>(`${this.baseURL}/api/filme`);
   }
 
-  deletar(id:number) {
+  deletar(id: number) {
     return this.http.delete<FilmeSerie>(`${this.baseURL}/api/filme/${id}`);
   }
 
-  atualizar(id:number, filmeSerie:FilmeSerie){
-
+  atualizar(id: number, filmeSerie: FilmeSerie) {}
+  setId(id: number) {
+    this.id = id;
   }
 
+  getId(): number {
+    return this.id;
+  }
 }

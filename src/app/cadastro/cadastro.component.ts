@@ -1,3 +1,4 @@
+import { HomeService } from './../home/home.service';
 import { CadastroService } from './cadastro.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
@@ -15,16 +16,19 @@ export class CadastroComponent implements OnInit {
   filmeSerieBody = new FilmeSerie();
   imgBase64: string = '';
 
-  id: number = 0;
+  id!: number;
 
   constructor(
     private messageService: MessageService,
     private cadastroService: CadastroService,
+    private homeService: HomeService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.id = this.homeService.getId();
     this.buscarDadosPeloId(this.id);
+    console.log(this.id)
   }
 
   onUpload(event: any) {
