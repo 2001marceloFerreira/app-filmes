@@ -55,6 +55,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
+editar(id:number){
+  this.homeService.setId(id);
+  this.router.navigate([`/cadastro`,id])
+}
 
 }

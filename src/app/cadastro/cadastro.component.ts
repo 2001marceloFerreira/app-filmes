@@ -3,7 +3,7 @@ import { CadastroService } from './cadastro.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { FilmeSerie } from '../models/filmeSerie';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -22,13 +22,20 @@ export class CadastroComponent implements OnInit {
     private messageService: MessageService,
     private cadastroService: CadastroService,
     private homeService: HomeService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.id = this.homeService.getId();
-    this.buscarDadosPeloId(this.id);
-    console.log(this.id)
+    // this.buscarDadosPeloId(this.id);
+    console.log(this.id);
+
+    const id: any = this.route.snapshot.paramMap.get('id')
+
+    if (id) {
+      this.buscarDadosPeloId(id)
+    }
   }
 
   onUpload(event: any) {
@@ -90,6 +97,21 @@ export class CadastroComponent implements OnInit {
     this.cadastroService.buscarPeloID(id).subscribe((response) => {
       this.filmeSerieBody = response;
       console.log(response);
+    });
+  }
+
+
+  salvarEditar(id: number, filmeSerieBody: FilmeSerie) {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.editarFilme(id, filmeSerieBody)
+    } else {
+      this.cadastrarFilmeSerie()
+    }
+  }
+  editarFilme(id: number, request: FilmeSerie) {
+    this.cadastroService.editarFilme(id, request).subscribe((editar) => {
+      this.router.navigate(['/'])
+      console.log("editou")
     });
   }
 

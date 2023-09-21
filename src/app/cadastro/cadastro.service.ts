@@ -4,22 +4,24 @@ import { environment } from 'src/environments/environment';
 import { FilmeSerie } from '../models/filmeSerie';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CadastroService {
-
   baseURL = '';
 
   constructor(private http: HttpClient) {
     this.baseURL = `${environment.baseUrl}`;
   }
 
-adicionarFilmeSerie(filmeSerie: FilmeSerie){
-  return this.http.post<any>(`${this.baseURL}/api/filme`, filmeSerie);
-}
+  adicionarFilmeSerie(filmeSerie: FilmeSerie) {
+    return this.http.post<any>(`${this.baseURL}/api/filme`, filmeSerie);
+  }
 
-buscarPeloID(id:number){
-  return this.http.get<any>(`${this.baseURL}/api/filme/${id}`);
-}
+  buscarPeloID(id: number) {
+    return this.http.get<any>(`${this.baseURL}/api/filme/${id}`);
+  }
 
+  editarFilme(id: number, request: FilmeSerie) {
+    return this.http.put<FilmeSerie>(`${this.baseURL}/api/filme/${id}`, request);
+  }
 }
