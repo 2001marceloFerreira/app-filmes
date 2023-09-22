@@ -3,8 +3,9 @@
   <div
     class="grid col-12 justify-content-center align-items-center flex-column"
   >
-    <p class="txt">Informe os dados sobre o filme ou série</p>
-  </div>
+  <p *ngIf="id === undefined" class="txt">Informe os dados sobre o filme ou série</p>
+  <p *ngIf="id !== undefined" class="txt">Atualize os dados sobre {{filmeSerieBody.nome}}</p>
+</div>
   <div
     class="grid col-12 justify-content-center align-items-center flex-column"
   >
@@ -12,20 +13,24 @@
       <input type="text" class="pr-8" [(ngModel)]="filmeSerieBody.nome" pInputText placeholder="Nome do Filme ou série " />
     </div>
 
-    <h3>Selecione a imagem de capa</h3>
+    <p class="txt">Selecione a imagem de capa</p>
     <p-fileUpload
     chooseLabel="Escolher"
     name="file[]"
+    uploadStyleClass=bg-red-500
+    chooseStyleClass=bg-red-500
+    cancelStyleClass="bg-red-500"
     [customUpload]="true"
     (uploadHandler)="onUpload($event)"
     [maxFileSize]="200000000"
   >
   </p-fileUpload>
 
-    <span class="p-float-label mt-5">
+    <span *ngIf="id === undefined" class="p-float-label mt-5">
       <textarea id="float-input" [(ngModel)]="filmeSerieBody.descricao" rows="7" cols="55" pInputTextarea></textarea>
       <label for="float-input">Descrição do filme/série</label>
     </span>
+    <textarea class="mt-5" *ngIf="id !== undefined" [(ngModel)]="filmeSerieBody.descricao" rows="7" cols="55" pInputTextarea></textarea>
   </div>
   <div class="btn grid col-12">
     <button

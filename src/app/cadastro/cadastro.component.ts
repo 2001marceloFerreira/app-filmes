@@ -41,7 +41,6 @@ export class CadastroComponent implements OnInit {
   onUpload(event: any) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
-      console.log(file);
 
       if (file) {
         const reader = new FileReader();
@@ -102,14 +101,18 @@ export class CadastroComponent implements OnInit {
 
 
   salvarEditar(id: number, filmeSerieBody: FilmeSerie) {
+
     if (this.route.snapshot.paramMap.get('id')) {
       this.editarFilme(id, filmeSerieBody)
     } else {
       this.cadastrarFilmeSerie()
     }
   }
+
   editarFilme(id: number, request: FilmeSerie) {
+    this.filmeSerieBody.imagemBase64 = this.imgBase64;
     this.cadastroService.editarFilme(id, request).subscribe((editar) => {
+      console.log("BS64 --> ", this.filmeSerieBody.imagemBase64)
       this.router.navigate(['/'])
       console.log("editou")
     });

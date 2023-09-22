@@ -5,9 +5,9 @@
   justify-content: center;
   margin-top: 1rem;
   font-family: "Kanit", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
 }
 .container-input {
   display: flex;
@@ -35,14 +35,14 @@
   align-items: center;
   justify-content: center;
   color: #FFFDFD;
-  background-color: #414141;
+  background-color: #db0b0b;
   padding: 1rem 6rem;
   border-radius: 6px;
-  border-color: #4E4A4A;
+  border-color: #bb0303;
 }
 .p-button:enabled:hover {
-  background: #3B3838;
-  border-color: #443F3F;
+  background: #ca0000;
+  border-color: #ba0303;
   box-shadow: #3B3838;
 }
 .p-inputtext:enabled:focus {

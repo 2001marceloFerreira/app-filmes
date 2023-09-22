@@ -1,12 +1,12 @@
 .resultado-prova-de-vida {
   width: 100%;
-  max-height: 400px;
+  max-height: 250px;
   border-radius: 8px;
   border: 1px solid #222;
 }
 .resultado-prova-de-vida2 {
-  width: 20%;
-  max-height: 400px;
+  width: 30%;
+  max-height: 250px;
   border-radius: 8px;
   border: 1px solid #222;
 }
